@@ -16,12 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let SCAuth = SoundCloudAuth()
+        Soundcloud.clientIdentifier = SCAuth.clientIdentifier
+        Soundcloud.clientSecret = SCAuth.clientSecret
+        Soundcloud.redirectURI = SCAuth.redirectURI
+        
         return true
     }
-    
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        print("got to this point")
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print("fuck yea")
         
         return true
     }
