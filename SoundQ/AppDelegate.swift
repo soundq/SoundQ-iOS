@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Soundcloud
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

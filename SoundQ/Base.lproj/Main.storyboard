@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +16,68 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sk-PK-iKq">
+                                <rect key="frame" x="150" y="262" width="248" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="soundcloud-connect"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="77" y="283" width="247" height="34"/>
+                                </variation>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="79X-oC-OqX">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="84" y="72" width="240" height="139"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="79X-oC-OqX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BdJ-nh-2Rr"/>
+                            <constraint firstItem="8sk-PK-iKq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HLx-Zp-c20"/>
+                            <constraint firstItem="8sk-PK-iKq" firstAttribute="top" secondItem="79X-oC-OqX" secondAttribute="bottom" constant="70" id="Haz-ZP-lZb"/>
+                            <constraint firstItem="8sk-PK-iKq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UNb-GQ-kqE"/>
+                            <constraint firstItem="y3c-jy-aDJ" firstAttribute="bottom" secondItem="79X-oC-OqX" secondAttribute="top" constant="65" id="djv-28-qd5">
+                                <variation key="widthClass=compact" constant="-65"/>
+                            </constraint>
+                            <constraint firstItem="79X-oC-OqX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="2:5" id="zUW-M2-8II"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="79X-oC-OqX"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="djv-28-qd5"/>
+                                <exclude reference="BdJ-nh-2Rr"/>
+                                <exclude reference="zUW-M2-8II"/>
+                                <exclude reference="HLx-Zp-c20"/>
+                                <exclude reference="Haz-ZP-lZb"/>
+                                <exclude reference="UNb-GQ-kqE"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="79X-oC-OqX"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="djv-28-qd5"/>
+                                <include reference="BdJ-nh-2Rr"/>
+                                <include reference="zUW-M2-8II"/>
+                                <include reference="HLx-Zp-c20"/>
+                                <include reference="Haz-ZP-lZb"/>
+                                <include reference="UNb-GQ-kqE"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="244.5" y="314"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="1280" height="729"/>
+        <image name="soundcloud-connect" width="124" height="29"/>
+    </resources>
 </document>

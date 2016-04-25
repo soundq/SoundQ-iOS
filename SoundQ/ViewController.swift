@@ -12,7 +12,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let backgroundImage = UIImage(named: "login_background")
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = backgroundImage
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
+        
     }
 
     override func didReceiveMemoryWarning() {
