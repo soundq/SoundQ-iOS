@@ -4,6 +4,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 pod 'Soundcloud'
+pod 'Firebase', '>= 2.5.1'
 
 target 'SoundQ' do
 
