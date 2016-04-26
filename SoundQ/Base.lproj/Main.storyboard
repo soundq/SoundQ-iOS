@@ -77,7 +77,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="1280" height="729"/>
+        <image name="logo" width="4188" height="1147"/>
         <image name="soundcloud-connect" width="124" height="29"/>
     </resources>
 </document>
