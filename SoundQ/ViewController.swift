@@ -8,8 +8,12 @@
 
 import UIKit
 import Soundcloud
+import Alamofire
+import Firebase
 
 class ViewController: UIViewController {
+    
+    var user: User?
 
     @IBOutlet weak var connectButton: UIButton!
     
@@ -30,7 +34,42 @@ class ViewController: UIViewController {
     }
 
     @IBAction func connectButtonPressed(sender: AnyObject) {
-        Session.login(self, completion: { result in })
+        Session.login(self, completion:{ result in
+            self.loadUser()
+        })
+    }
+    
+    func loadUser() {
+        Soundcloud.session?.me({ result in
+            self.user = result.response.result
+            
+            if self.user != nil {
+                self.authenticateWithFirebase()
+            }
+        })
+    }
+    
+    func authenticateWithFirebase() {
+        let ref = Firebase(url: "https://soundq.firebaseio.com/")
+        
+        Alamofire.request(.GET, "http://sound-q.herokuapp.com/gettoken/", parameters: ["uid": user!.identifier, "auth_data": ""]).responseString { response in
+            
+            if let auth_token = response.result.value {
+                ref.authWithCustomToken(auth_token, withCompletionBlock: { error, authData in
+                    if error == nil {
+                        self.updateUserInFirebase()
+                    }
+                })
+            }
+        }
+    }
+    
+    func updateUserInFirebase() {
+        let userURL = "https://soundq.firebaseio.com/users/"+String(self.user!.identifier)
+        let userRef = Firebase(url: userURL)
+        
+        userRef.childByAppendingPath("fullName").setValue(self.user!.fullname)
+        userRef.childByAppendingPath("userName").setValue(self.user!.username)
     }
     
 

@@ -1,5 +1,6 @@
 PODS:
   - 1PasswordExtension (1.8.1)
+  - Alamofire (3.3.1)
   - Firebase (2.5.1)
   - Soundcloud (0.8.0):
     - 1PasswordExtension (~> 1.5)
@@ -7,11 +8,13 @@ PODS:
   - UICKeyChainStore (2.0.7)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.3)
   - Firebase (>= 2.5.1)
   - Soundcloud
 
 SPEC CHECKSUMS:
   1PasswordExtension: 00d6f4caae77c19ba33045b8569fbeb9689f0d1d
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   Soundcloud: c003a1c7e281eab6206d18bccf00058958250aae
   UICKeyChainStore: 696cd35083f7c8fb5e201d909b7e6aea6b478575
