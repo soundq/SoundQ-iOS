@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D955CE01CE2BC0C001F28DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */; };
 		0DA873991CCE674500E17A03 /* SoundCloudAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA873981CCE674500E17A03 /* SoundCloudAuth.swift */; };
 		0DD718F21CCD21140064A8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD718F11CCD21140064A8F1 /* AppDelegate.swift */; };
 		0DD718F41CCD21140064A8F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD718F31CCD21140064A8F1 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "../../../../nishilshah/workspace/SoundQ-iOS/SoundQ/HomeViewController.swift"; sourceTree = "<group>"; };
 		0DA873981CCE674500E17A03 /* SoundCloudAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundCloudAuth.swift; path = "../../../../nishilshah/workspace/SoundQ-iOS/SoundQ/SoundCloudAuth.swift"; sourceTree = "<group>"; };
 		0DD718EE1CCD21140064A8F1 /* SoundQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD718F11CCD21140064A8F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				0DD718F81CCD21140064A8F1 /* Assets.xcassets */,
 				0DD718FA1CCD21140064A8F1 /* LaunchScreen.storyboard */,
 				0DD718FD1CCD21140064A8F1 /* Info.plist */,
+				0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */,
 			);
 			path = SoundQ;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				0DD718F41CCD21140064A8F1 /* ViewController.swift in Sources */,
 				0DA873991CCE674500E17A03 /* SoundCloudAuth.swift in Sources */,
 				0DD718F21CCD21140064A8F1 /* AppDelegate.swift in Sources */,
+				0D955CE01CE2BC0C001F28DD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

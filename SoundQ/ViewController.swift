@@ -44,6 +44,7 @@ class ViewController: UIViewController {
             self.user = result.response.result
             
             if self.user != nil {
+                self.loadHomeViewController()
                 self.authenticateWithFirebase()
             }
         })
@@ -68,10 +69,18 @@ class ViewController: UIViewController {
         let userURL = "https://soundq.firebaseio.com/users/"+String(self.user!.identifier)
         let userRef = Firebase(url: userURL)
         
-        userRef.childByAppendingPath("fullName").setValue(self.user!.fullname)
-        userRef.childByAppendingPath("userName").setValue(self.user!.username)
+        userRef.observeSingleEventOfType(.Value, withBlock: { userSnapshot in
+            userRef.childByAppendingPath("fullName").setValue(self.user!.fullname)
+            if(!userSnapshot.hasChild("queues")) {
+                userRef.childByAppendingPath("queues").setValue("null");
+            }
+        })
     }
     
+    func loadHomeViewController() {
+        let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+    }
 
 }
 
