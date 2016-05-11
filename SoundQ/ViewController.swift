@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBarHidden = true
+        
         //set background image
         let backgroundImage = UIImage(named: "login_background")
         let imageView = UIImageView(frame: self.view.bounds)
@@ -31,6 +33,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("hello")
+        self.navigationController?.navigationBarHidden = false;
     }
 
     @IBAction func connectButtonPressed(sender: AnyObject) {
@@ -78,8 +85,10 @@ class ViewController: UIViewController {
     }
     
     func loadHomeViewController() {
-        let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
-        self.presentViewController(homeViewController, animated: true, completion: nil)
+        //let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
+        //self.presentViewController(homeViewController, animated: true, completion: nil)
+        
+        self.performSegueWithIdentifier("HomeSegue", sender: self)
     }
 
 }

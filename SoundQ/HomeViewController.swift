@@ -13,9 +13,22 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationBar()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func setNavigationBar() {
+        let textAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        self.title = "SoundQ"
+        
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
 }
