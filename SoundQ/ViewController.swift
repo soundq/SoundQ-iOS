@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("hello")
         self.navigationController?.navigationBarHidden = false;
     }
 
@@ -85,9 +84,6 @@ class ViewController: UIViewController {
     }
     
     func loadHomeViewController() {
-        //let homeViewController = self.storyboard?.instantiateViewControllerWithIdentifier("homeViewController") as! HomeViewController
-        //self.presentViewController(homeViewController, animated: true, completion: nil)
-        
         self.performSegueWithIdentifier("HomeSegue", sender: self)
     }
 
