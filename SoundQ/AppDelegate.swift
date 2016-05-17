@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //configure status bar
+        application.statusBarHidden = false
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        
         let SCAuth = SoundCloudAuth()
         Soundcloud.clientIdentifier = SCAuth.clientIdentifier
         Soundcloud.clientSecret = SCAuth.clientSecret

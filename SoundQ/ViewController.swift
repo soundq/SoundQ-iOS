@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = true
-        
+    
         //set background image
         let backgroundImage = UIImage(named: "login_background")
         let imageView = UIImageView(frame: self.view.bounds)
@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func connectButtonPressed(sender: AnyObject) {
+        hideStatusBar()
         Session.login(self, completion:{ result in
             self.loadUser()
         })
@@ -85,6 +86,10 @@ class ViewController: UIViewController {
     
     func loadHomeViewController() {
         self.performSegueWithIdentifier("HomeSegue", sender: self)
+    }
+    
+    func hideStatusBar() {
+        UIApplication.sharedApplication().statusBarHidden = true
     }
 
 }

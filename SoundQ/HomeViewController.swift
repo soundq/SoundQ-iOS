@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        horizontalScrollView.backgroundColor = UIColor.blueColor()
         self.view.backgroundColor = UIColor.blackColor()
         setNavigationBar()
         setScrollView()
@@ -27,16 +28,16 @@ class HomeViewController: UIViewController {
     }
     
     func setScrollView() {
-        let scrollingView = colorButtonsView(CGSizeMake(100.0,50.0), buttonCount: 10)
+        let scrollingView = colorButtonsView(CGSizeMake(horizontalScrollView.frame.size.height * 2,horizontalScrollView.frame.size.height * 2), buttonCount: 6)
         horizontalScrollView.contentSize = scrollingView.frame.size
         horizontalScrollView.addSubview(scrollingView)
-        horizontalScrollView.showsHorizontalScrollIndicator = true
+        horizontalScrollView.showsHorizontalScrollIndicator = false
         horizontalScrollView.indicatorStyle = .Default
     }
     
     func setNavigationBar() {
         let textAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UIApplication.sharedApplication().statusBarHidden = false
         self.title = "SoundQ"
         
         self.navigationItem.hidesBackButton = true
@@ -49,12 +50,16 @@ class HomeViewController: UIViewController {
         //creates color buttons in a UIView
         let buttonView = UIView()
         
-        buttonView.backgroundColor = UIColor.blackColor()
         buttonView.frame.origin = CGPointMake(0,0)
-        
         let padding = CGSizeMake(10, 10)
-        let buttonViewSize = CGSizeMake((buttonSize.width + padding.width) * CGFloat(buttonCount), buttonSize.height +  2.0 * padding.height)
+        let buttonViewSize = CGSizeMake((buttonSize.width + padding.width) * CGFloat(buttonCount), buttonSize.height)
         buttonView.frame.size = buttonViewSize
+        
+        print("button view size: \(buttonViewSize.height)")
+        print("button view size: \(horizontalScrollView.frame.size.height)")
+        
+        
+        buttonView.backgroundColor = UIColor.whiteColor()
         
         //add buttons to the view
         var buttonPosition = CGPointMake(padding.width * 0.5, padding.height)
@@ -69,14 +74,14 @@ class HomeViewController: UIViewController {
             buttonPosition.x = buttonPosition.x + buttonIncrement
             button.backgroundColor = UIColor(hue: newHue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
             newHue = newHue + hueIncrement
-            button.addTarget(self, action: #selector(HomeViewController.colorButtonPressed(_:)), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(HomeViewController.queuePressed(_:)), forControlEvents: .TouchUpInside)
             buttonView.addSubview(button)
         }
         
         return buttonView
     }
     
-    func colorButtonPressed(sender:UIButton){
-        horizontalScrollView.backgroundColor = sender.backgroundColor
+    func queuePressed(sender:UIButton){
+        //print(sender)
     }
 }
