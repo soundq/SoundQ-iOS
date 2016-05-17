@@ -17,8 +17,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        horizontalScrollView.backgroundColor = UIColor.blueColor()
-        self.view.backgroundColor = UIColor.blackColor()
+        setBackgroundColors()
         setNavigationBar()
         setScrollView()
     }
@@ -27,9 +26,14 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func setBackgroundColors() {
+        horizontalScrollView.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = UIColor.blackColor()
+    }
+    
     func setScrollView() {
-        let scrollingView = colorButtonsView(CGSizeMake(horizontalScrollView.frame.size.height * 2,horizontalScrollView.frame.size.height * 2), buttonCount: 6)
-        horizontalScrollView.contentSize = scrollingView.frame.size
+        let scrollingView = colorButtonsView(CGSizeMake(horizontalScrollView.frame.size.height * 1.5,horizontalScrollView.frame.size.height * 1.5), buttonCount: 6)
+        horizontalScrollView.contentSize = CGSizeMake(scrollingView.frame.size.width, 1.0)
         horizontalScrollView.addSubview(scrollingView)
         horizontalScrollView.showsHorizontalScrollIndicator = false
         horizontalScrollView.indicatorStyle = .Default
@@ -55,14 +59,11 @@ class HomeViewController: UIViewController {
         let buttonViewSize = CGSizeMake((buttonSize.width + padding.width) * CGFloat(buttonCount), buttonSize.height)
         buttonView.frame.size = buttonViewSize
         
-        print("button view size: \(buttonViewSize.height)")
-        print("button view size: \(horizontalScrollView.frame.size.height)")
         
-        
-        buttonView.backgroundColor = UIColor.whiteColor()
+        buttonView.backgroundColor = UIColor.blackColor()
         
         //add buttons to the view
-        var buttonPosition = CGPointMake(padding.width * 0.5, padding.height)
+        var buttonPosition = CGPointMake(padding.width * 0.5, 0)
         let buttonIncrement = buttonSize.width + padding.width
         let hueIncrement = 1.0 / CGFloat(buttonCount)
         var newHue = hueIncrement
