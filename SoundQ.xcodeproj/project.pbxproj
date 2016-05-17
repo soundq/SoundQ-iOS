@@ -16,6 +16,7 @@
 		0DD718FC1CCD21140064A8F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DD718FA1CCD21140064A8F1 /* LaunchScreen.storyboard */; };
 		0DD719071CCD21150064A8F1 /* SoundQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD719061CCD21150064A8F1 /* SoundQTests.swift */; };
 		0DD719121CCD21150064A8F1 /* SoundQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD719111CCD21150064A8F1 /* SoundQUITests.swift */; };
+		0DF13C621CEABE7200EF0EE0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF13C611CEABE7200EF0EE0 /* Utilities.swift */; };
 		CF009411A97E82CC7508360D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50277A1D2B3A95B15FA9ABFE /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		0DD7190D1CCD21150064A8F1 /* SoundQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD719111CCD21150064A8F1 /* SoundQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundQUITests.swift; sourceTree = "<group>"; };
 		0DD719131CCD21150064A8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DF13C611CEABE7200EF0EE0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		50277A1D2B3A95B15FA9ABFE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF065D4C0E23E4D4D810EDA3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D16585EE5D193CC5CD88E044 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				0DD718F11CCD21140064A8F1 /* AppDelegate.swift */,
 				0DA873981CCE674500E17A03 /* SoundCloudAuth.swift */,
+				0DF13C611CEABE7200EF0EE0 /* Utilities.swift */,
 				0DD718F31CCD21140064A8F1 /* ViewController.swift */,
 				0DD718F51CCD21140064A8F1 /* Main.storyboard */,
 				0DD718F81CCD21140064A8F1 /* Assets.xcassets */,
@@ -343,6 +346,7 @@
 				0DD718F41CCD21140064A8F1 /* ViewController.swift in Sources */,
 				0DA873991CCE674500E17A03 /* SoundCloudAuth.swift in Sources */,
 				0DD718F21CCD21140064A8F1 /* AppDelegate.swift in Sources */,
+				0DF13C621CEABE7200EF0EE0 /* Utilities.swift in Sources */,
 				0D955CE01CE2BC0C001F28DD /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

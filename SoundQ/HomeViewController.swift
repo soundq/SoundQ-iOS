@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     
+    var hsvHeight: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +34,9 @@ class HomeViewController: UIViewController {
     }
     
     func setScrollView() {
-        let scrollingView = colorButtonsView(CGSizeMake(horizontalScrollView.frame.size.height * 1.5,horizontalScrollView.frame.size.height * 1.5), buttonCount: 6)
+        hsvHeight = horizontalScrollView.frame.size.height
+        
+        let scrollingView = colorButtonsView(CGSizeMake(hsvHeight * 1.4, hsvHeight * 1.4), buttonCount: 6)
         horizontalScrollView.contentSize = CGSizeMake(scrollingView.frame.size.width, 1.0)
         horizontalScrollView.addSubview(scrollingView)
         horizontalScrollView.showsHorizontalScrollIndicator = false
@@ -58,23 +62,28 @@ class HomeViewController: UIViewController {
         let padding = CGSizeMake(10, 10)
         let buttonViewSize = CGSizeMake((buttonSize.width + padding.width) * CGFloat(buttonCount), buttonSize.height)
         buttonView.frame.size = buttonViewSize
-        
-        
         buttonView.backgroundColor = UIColor.blackColor()
         
         //add buttons to the view
         var buttonPosition = CGPointMake(padding.width * 0.5, 0)
         let buttonIncrement = buttonSize.width + padding.width
-        let hueIncrement = 1.0 / CGFloat(buttonCount)
-        var newHue = hueIncrement
         
         for _ in 0...(buttonCount - 1)  {
             let button = UIButton(type: UIButtonType.Custom) as UIButton
+            
             button.frame.size = buttonSize
             button.frame.origin = buttonPosition
             buttonPosition.x = buttonPosition.x + buttonIncrement
-            button.backgroundColor = UIColor(hue: newHue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-            newHue = newHue + hueIncrement
+            button.backgroundColor = UIColor.blackColor()
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor.whiteColor().CGColor
+            
+            let buttonImage = UIImage(named: "album")
+            //let buttonImageSize = CGSizeMake(hsvHeight, hsvHeight)
+            //buttonImage = Utilities().resizeImage(buttonImage!, newSize: buttonImageSize)
+            button.setImage(buttonImage, forState: UIControlState.Normal)
+            
             button.addTarget(self, action: #selector(HomeViewController.queuePressed(_:)), forControlEvents: .TouchUpInside)
             buttonView.addSubview(button)
         }
