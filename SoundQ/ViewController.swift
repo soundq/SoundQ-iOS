@@ -17,6 +17,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var connectButton: UIButton!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let ref = Firebase(url: "https://soundq.firebaseio.com/")
+        if(ref.authData != nil) {
+            loadHomeViewController()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
