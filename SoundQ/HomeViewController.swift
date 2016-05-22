@@ -8,13 +8,18 @@
 
 import UIKit
 import Firebase
-import ASHorizontalScrollView
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     
     var hsvHeight: CGFloat = 0
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //load queues from FireBase
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,21 +73,15 @@ class HomeViewController: UIViewController {
         var buttonPosition = CGPointMake(padding.width * 0.5, 0)
         let buttonIncrement = buttonSize.width + padding.width
         
-        for _ in 0...(buttonCount - 1)  {
-            let button = UIButton(type: UIButtonType.Custom) as UIButton
+        for i in 0...(buttonCount - 1)  {
+            let button = configureQueueButtonWithIdentifier(String(i), size: buttonSize, position: buttonPosition)
             
-            button.frame.size = buttonSize
-            button.frame.origin = buttonPosition
             buttonPosition.x = buttonPosition.x + buttonIncrement
-            button.backgroundColor = UIColor.blackColor()
-            button.layer.cornerRadius = 5
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor.whiteColor().CGColor
             
-            let buttonImage = UIImage(named: "album")
-            //let buttonImageSize = CGSizeMake(hsvHeight, hsvHeight)
-            //buttonImage = Utilities().resizeImage(buttonImage!, newSize: buttonImageSize)
-            button.setImage(buttonImage, forState: UIControlState.Normal)
+            //set background image
+            var buttonImage = UIImage(named: "album")
+            buttonImage = Utilities().drawRectangleOnImage(buttonImage!)
+            button.setBackgroundImage(buttonImage, forState: UIControlState.Normal)
             
             button.addTarget(self, action: #selector(HomeViewController.queuePressed(_:)), forControlEvents: .TouchUpInside)
             buttonView.addSubview(button)
@@ -91,7 +90,34 @@ class HomeViewController: UIViewController {
         return buttonView
     }
     
-    func queuePressed(sender:UIButton){
-        //print(sender)
+    func configureQueueButtonWithIdentifier(id: String, size: CGSize, position: CGPoint) -> UIButton {
+        let queueButton = UIButton(type: UIButtonType.Custom) as UIButton
+        
+        queueButton.accessibilityIdentifier = id
+        
+        queueButton.frame.size = size
+        queueButton.frame.origin = position
+        queueButton.backgroundColor = UIColor.blackColor()
+        queueButton.layer.cornerRadius = 5
+        queueButton.layer.borderWidth = 2
+        queueButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        queueButton.setTitle("Nishil's Queue", forState: UIControlState.Normal)
+        queueButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
+        
+        return queueButton
     }
+
+    func queuePressed(sender: UIButton){
+        let queueIdentifier = sender.accessibilityIdentifier!
+        print("button id: \(queueIdentifier)")
+        
+        self.performSegueWithIdentifier("QueueSegue", sender: self)
+    }
+    
+    @IBAction func createQueuePressed(sender: UIButton) {
+        //let alert = UIAlertController(title: "Create Queue", message: "Enter a title for your queue:", preferredStyle: UIAlertControllerStyle.)
+        //show alert asking for Queue Name
+    }
+    
 }
