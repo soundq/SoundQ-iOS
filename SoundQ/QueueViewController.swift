@@ -10,8 +10,12 @@ import UIKit
 
 class QueueViewController: UIViewController {
     
+    var queue: Queue?
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.title = queue?.title
     }
     
     override func viewDidLoad() {
@@ -32,8 +36,8 @@ class QueueViewController: UIViewController {
     func setNavigationBar() {
         let textAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]
         UIApplication.sharedApplication().statusBarHidden = false
-        self.title = "Q Name"
         
+        //TODO: Back button not showing on first access to view controller when title present
         self.navigationItem.hidesBackButton = false
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.translucent = false

@@ -14,15 +14,17 @@ import Firebase
 class ViewController: UIViewController {
     
     var user: User?
+    var userIsLoggedIn: Bool = false
 
     @IBOutlet weak var connectButton: UIButton!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let ref = Firebase(url: "https://soundq.firebaseio.com/")
-        if(ref.authData != nil) {
-            loadHomeViewController()
+        let ref = Firebase(url: "https://soundq.firebaseio.com")
+        userIsLoggedIn = (ref.authData != nil)
+        if userIsLoggedIn {
+            connectButton.hidden = true
         }
     }
     
@@ -37,6 +39,14 @@ class ViewController: UIViewController {
         imageView.image = backgroundImage
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(userIsLoggedIn) {
+            loadHomeViewController()
+        }
     }
 
     override func didReceiveMemoryWarning() {

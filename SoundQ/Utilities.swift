@@ -36,17 +36,19 @@ struct Utilities {
     }
     
     func drawRectangleOnImage(image: UIImage) -> UIImage {
+        //begin graphics
         let imageSize = image.size
         let scale: CGFloat = 0
         UIGraphicsBeginImageContextWithOptions(imageSize, false, scale)
-        
         image.drawAtPoint(CGPointZero)
+        
+        //draw rectangle
         let rectangle = CGRect(x: 0, y: (imageSize.height/2) - 30, width: imageSize.width, height: 60)
-        
-        let rectangleColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        let rectangleColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         rectangleColor.setFill()
-        UIRectFill(rectangle)
+        UIRectFillUsingBlendMode(rectangle, CGBlendMode.Normal)
         
+        //return new image
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage

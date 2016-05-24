@@ -8,6 +8,7 @@
 
 import UIKit
 import Soundcloud
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

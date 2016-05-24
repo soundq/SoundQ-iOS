@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" id="V3R-Ki-L3x"/>
                     <connections>
                         <outlet property="connectButton" destination="8sk-PK-iKq" id="zdB-CL-Y3u"/>
-                        <segue destination="IYC-X0-4o8" kind="show" identifier="HomeSegue" id="bpS-0w-XL1"/>
+                        <segue destination="IYC-X0-4o8" kind="show" identifier="HomeSegue" id="IIG-j4-skk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,24 +236,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oB-29-v7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008.5" y="314"/>
+            <point key="canvasLocation" x="2227.5" y="314"/>
         </scene>
         <!--Queue View Controller-->
         <scene sceneID="QLC-hg-QeB">
             <objects>
-                <viewController id="ie0-8V-gI5" customClass="QueueViewController" customModule="SoundQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="queueViewController" id="ie0-8V-gI5" customClass="QueueViewController" customModule="SoundQ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pXK-zK-cNP"/>
                         <viewControllerLayoutGuide type="bottom" id="mxh-4t-0Mw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Oq6-hX-5dm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4h1-9q-QUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2881.5" y="314"/>
+            <point key="canvasLocation" x="2227.5" y="1080"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YHQ-q5-bnS">

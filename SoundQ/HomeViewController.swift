@@ -13,12 +13,12 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     
-    var hsvHeight: CGFloat = 0
+    var pressedQueue: Queue?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //load queues from FireBase
+        //load basic queue data from FireBase
     }
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     func setScrollView() {
-        hsvHeight = horizontalScrollView.frame.size.height
+        let hsvHeight = horizontalScrollView.frame.size.height
         
         let scrollingView = colorButtonsView(CGSizeMake(hsvHeight * 1.4, hsvHeight * 1.4), buttonCount: 6)
         horizontalScrollView.contentSize = CGSizeMake(scrollingView.frame.size.width, 1.0)
@@ -53,6 +53,7 @@ class HomeViewController: UIViewController {
         UIApplication.sharedApplication().statusBarHidden = false
         self.title = "SoundQ"
         
+        //TODO: Back button not hid on first access to view controller
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.translucent = false
@@ -102,22 +103,49 @@ class HomeViewController: UIViewController {
         queueButton.layer.borderWidth = 2
         queueButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-        queueButton.setTitle("Nishil's Queue", forState: UIControlState.Normal)
+        queueButton.setTitle("Nishil Queue \(id)", forState: UIControlState.Normal)
         queueButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
         
         return queueButton
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "QueueSegue") {
+            let nextViewController = segue.destinationViewController as! QueueViewController
+            nextViewController.queue = pressedQueue
+        }
+    }
 
     func queuePressed(sender: UIButton){
+        let queueTitle = sender.currentTitle!
         let queueIdentifier = sender.accessibilityIdentifier!
-        print("button id: \(queueIdentifier)")
+        pressedQueue = Queue(title: queueTitle, identifier: queueIdentifier)
         
         self.performSegueWithIdentifier("QueueSegue", sender: self)
     }
     
+    func createQueue(title: String) {
+        print("Queue Title: \(title)")
+        
+    }
+    
     @IBAction func createQueuePressed(sender: UIButton) {
-        //let alert = UIAlertController(title: "Create Queue", message: "Enter a title for your queue:", preferredStyle: UIAlertControllerStyle.)
-        //show alert asking for Queue Name
+        
+        let alert = UIAlertController(title: "Create Queue", message: "Give it a name:", preferredStyle: .Alert)
+        
+        //configure alert
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.placeholder = "User's Queue"
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            //process results
+            let textField = alert.textFields![0] as UITextField
+            let newQueueTitle = textField.text!
+            self.createQueue(newQueueTitle)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
