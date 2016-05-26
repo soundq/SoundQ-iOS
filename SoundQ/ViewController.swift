@@ -9,6 +9,7 @@
 import UIKit
 import Soundcloud
 import Alamofire
+import RealmSwift
 import Firebase
 
 class ViewController: UIViewController {
@@ -31,6 +32,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(Realm.Configuration.defaultConfiguration.fileURL?.path)
+        
         self.navigationController?.navigationBarHidden = true
     
         //set background image
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if(userIsLoggedIn) {
-            loadHomeViewController()
+            //loadHomeViewController()
         }
     }
 
@@ -72,8 +75,23 @@ class ViewController: UIViewController {
             if self.user != nil {
                 self.loadHomeViewController()
                 self.authenticateWithFirebase()
+                self.storeUser()
             }
         })
+    }
+    
+    func storeUser() {
+        let realmUser = RealmUser(fromUser: user!)
+        let realm = try! Realm()
+        
+        //get older versions of users stored with same ID
+        //let otherRealmUsers = realm.objects(RealmUser).filter("identifier == \(user?.identifier)")
+        
+        try! realm.write {
+            //realm.delete(otherRealmUsers)
+            realm.deleteAll()
+            realm.add(realmUser)
+        }
     }
     
     func authenticateWithFirebase() {

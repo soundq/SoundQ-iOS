@@ -3,6 +3,11 @@ PODS:
   - Alamofire (3.3.1)
   - ASHorizontalScrollView (1.1)
   - Firebase (2.5.1)
+  - Realm (1.0.0):
+    - Realm/Headers (= 1.0.0)
+  - Realm/Headers (1.0.0)
+  - RealmSwift (1.0.0):
+    - Realm (= 1.0.0)
   - Soundcloud (0.8.0):
     - 1PasswordExtension (~> 1.5)
     - UICKeyChainStore (~> 2.0.6)
@@ -12,6 +17,7 @@ DEPENDENCIES:
   - Alamofire (~> 3.3)
   - ASHorizontalScrollView (~> 1.1)
   - Firebase (>= 2.5.1)
+  - RealmSwift
   - Soundcloud
 
 SPEC CHECKSUMS:
@@ -19,6 +25,8 @@ SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   ASHorizontalScrollView: 97f78b44008078b9c3ea1fe3ed7286c39e47d4e8
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
+  RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   Soundcloud: c003a1c7e281eab6206d18bccf00058958250aae
   UICKeyChainStore: 696cd35083f7c8fb5e201d909b7e6aea6b478575
 
