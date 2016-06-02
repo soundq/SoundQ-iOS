@@ -23,16 +23,20 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let ref = Firebase(url: "https://soundq.firebaseio.com")
+        let realm = try! Realm()
+        
         userIsLoggedIn = (ref.authData != nil)
+        print(userIsLoggedIn)
         if userIsLoggedIn {
             connectButton.hidden = true
+            let realmUser = realm.objects(RealmUser).first
+            user = User(fromRealmUser: realmUser!)
+            print(user)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(Realm.Configuration.defaultConfiguration.fileURL?.path)
         
         self.navigationController?.navigationBarHidden = true
     
@@ -48,7 +52,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if(userIsLoggedIn) {
-            //loadHomeViewController()
+            loadHomeViewController()
         }
     }
 

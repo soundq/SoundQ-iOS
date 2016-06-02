@@ -8,11 +8,13 @@
 
 import UIKit
 import Firebase
+import Soundcloud
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     
+    var user: User?
     var pressedQueue: Queue?
     
     override func viewWillAppear(animated: Bool) {
