@@ -62,7 +62,12 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.navigationController?.navigationBarHidden = false;
+        if(segue.identifier == "HomeSegue") {
+            self.navigationController?.navigationBarHidden = false;
+            
+            let nextViewController = segue.destinationViewController as! HomeViewController
+            nextViewController.user = self.user
+        }
     }
 
     @IBAction func connectButtonPressed(sender: AnyObject) {

@@ -129,6 +129,7 @@ class HomeViewController: UIViewController {
     func createQueue(title: String) {
         print("Queue Title: \(title)")
         
+        //store in firebase and Realm?
     }
     
     @IBAction func createQueuePressed(sender: UIButton) {
@@ -137,7 +138,7 @@ class HomeViewController: UIViewController {
         
         //configure alert
         alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.placeholder = "User's Queue"
+            textField.placeholder = "\(self.user!.username)'s Queue"
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
