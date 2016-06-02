@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D35A3B91D00816200F22899 /* QueueRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */; };
+		0D35A3BB1D008BA400F22899 /* JoinQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */; };
 		0D371A921CF2386A00A0AD31 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D371A911CF2386A00A0AD31 /* QueueViewController.swift */; };
 		0D5EB3FF1CF5FB7800FA9CCA /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */; };
 		0D6BEA9A1CF26812009510B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BEA991CF26812009510B9 /* Queue.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueRCodeViewController.swift; sourceTree = "<group>"; };
+		0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinQueueViewController.swift; sourceTree = "<group>"; };
 		0D371A911CF2386A00A0AD31 /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
 		0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		0D6BEA991CF26812009510B9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				0D371A911CF2386A00A0AD31 /* QueueViewController.swift */,
 				0D6BEA991CF26812009510B9 /* Queue.swift */,
 				0D9BDE271CFFBCA400E6A91C /* SoundcloudUserExtension.swift */,
+				0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */,
+				0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */,
 			);
 			path = SoundQ;
 			sourceTree = "<group>";
@@ -363,6 +369,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D35A3BB1D008BA400F22899 /* JoinQueueViewController.swift in Sources */,
+				0D35A3B91D00816200F22899 /* QueueRCodeViewController.swift in Sources */,
 				0D9BDE281CFFBCA400E6A91C /* SoundcloudUserExtension.swift in Sources */,
 				0DD718F41CCD21140064A8F1 /* ViewController.swift in Sources */,
 				0D6BEA9A1CF26812009510B9 /* Queue.swift in Sources */,

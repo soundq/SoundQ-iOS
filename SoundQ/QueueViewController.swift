@@ -42,6 +42,19 @@ class QueueViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(presentModal))
+        let search = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(addTapped))
+        
+        self.navigationItem.rightBarButtonItems = [search, add]
+    }
+    
+    func presentModal() {
+        self.performSegueWithIdentifier("QRCodeSegue", sender: self)
+    }
+    
+    func addTapped() {
+        
     }
     
 }

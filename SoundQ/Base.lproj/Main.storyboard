@@ -95,6 +95,9 @@
                                         <exclude reference="3Gz-nC-QvE"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="zjb-zv-PYs" kind="presentation" identifier="JoinQueueSegue" id="j9n-cw-RBv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0y-bf-PKA">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -238,6 +241,120 @@
             </objects>
             <point key="canvasLocation" x="2227.5" y="314"/>
         </scene>
+        <!--Join Queue View Controller-->
+        <scene sceneID="vGJ-ZG-2Rj">
+            <objects>
+                <viewController id="zjb-zv-PYs" customClass="JoinQueueViewController" customModule="SoundQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4C6-Yr-dMo"/>
+                        <viewControllerLayoutGuide type="bottom" id="FDB-bg-Z4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p5c-MD-Jiv">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR4-SU-FtJ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissViewController:" destination="zjb-zv-PYs" eventType="touchUpInside" id="sFp-Ny-ECX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sR4-SU-FtJ" firstAttribute="width" secondItem="p5c-MD-Jiv" secondAttribute="width" id="2bw-Xp-sEy"/>
+                            <constraint firstItem="FDB-bg-Z4h" firstAttribute="top" secondItem="sR4-SU-FtJ" secondAttribute="bottom" id="FB0-vn-mrg"/>
+                            <constraint firstItem="sR4-SU-FtJ" firstAttribute="centerX" secondItem="p5c-MD-Jiv" secondAttribute="centerX" id="Odn-1m-ghq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="sR4-SU-FtJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2bw-Xp-sEy"/>
+                                <exclude reference="Odn-1m-ghq"/>
+                                <exclude reference="FB0-vn-mrg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="sR4-SU-FtJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2bw-Xp-sEy"/>
+                                <include reference="Odn-1m-ghq"/>
+                                <include reference="FB0-vn-mrg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="sR4-SU-FtJ" id="5rS-ZU-wWZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKK-ZD-0gx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3198" y="314"/>
+        </scene>
+        <!--QueueR Code View Controller-->
+        <scene sceneID="dlU-7Q-1cy">
+            <objects>
+                <viewController storyboardIdentifier="qrCodeViewController" id="bIo-z6-IVO" customClass="QueueRCodeViewController" customModule="SoundQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ddz-fU-gaI"/>
+                        <viewControllerLayoutGuide type="bottom" id="p1x-ui-4ba"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QOh-Lh-ppL">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZf-n1-Kl9">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissViewController:" destination="bIo-z6-IVO" eventType="touchUpInside" id="x23-Fj-Ymr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tZf-n1-Kl9" firstAttribute="centerX" secondItem="QOh-Lh-ppL" secondAttribute="centerX" id="BEO-Gh-toX"/>
+                            <constraint firstItem="tZf-n1-Kl9" firstAttribute="width" secondItem="QOh-Lh-ppL" secondAttribute="width" id="Esu-rg-zAC"/>
+                            <constraint firstItem="p1x-ui-4ba" firstAttribute="top" secondItem="tZf-n1-Kl9" secondAttribute="bottom" id="N7m-Em-pFF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="tZf-n1-Kl9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BEO-Gh-toX"/>
+                                <exclude reference="Esu-rg-zAC"/>
+                                <exclude reference="N7m-Em-pFF"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="tZf-n1-Kl9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="BEO-Gh-toX"/>
+                                <include reference="Esu-rg-zAC"/>
+                                <include reference="N7m-Em-pFF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="tZf-n1-Kl9" id="aVd-qU-mFo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-gx-pbz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="1080"/>
+        </scene>
         <!--Queue View Controller-->
         <scene sceneID="QLC-hg-QeB">
             <objects>
@@ -251,6 +368,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="bIo-z6-IVO" kind="presentation" identifier="QRCodeSegue" id="pVE-MI-fJG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4h1-9q-QUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
