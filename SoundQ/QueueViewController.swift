@@ -37,7 +37,6 @@ class QueueViewController: UIViewController {
         let textAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor() ]
         UIApplication.sharedApplication().statusBarHidden = false
         
-        //TODO: Back button not showing on first access to view controller when title present
         self.navigationItem.hidesBackButton = false
         self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.translucent = false
