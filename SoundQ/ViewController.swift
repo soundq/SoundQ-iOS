@@ -26,12 +26,15 @@ class ViewController: UIViewController {
         let realm = try! Realm()
         
         userIsLoggedIn = (ref.authData != nil)
-        print(userIsLoggedIn)
         if userIsLoggedIn {
-            connectButton.hidden = true
             let realmUser = realm.objects(RealmUser).first
-            user = User(fromRealmUser: realmUser!)
-            print(user)
+            if realmUser != nil {
+                connectButton.hidden = true
+                user = User(fromRealmUser: realmUser!)
+                print(user)
+            } else {
+                userIsLoggedIn = false;
+            }
         }
     }
     

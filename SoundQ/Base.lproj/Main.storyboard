@@ -250,6 +250,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FDB-bg-Z4h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="p5c-MD-Jiv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR4-SU-FtJ">
@@ -259,7 +260,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismissViewController:" destination="zjb-zv-PYs" eventType="touchUpInside" id="sFp-Ny-ECX"/>
+                                    <action selector="backPressed:" destination="zjb-zv-PYs" eventType="touchUpInside" id="M0R-iR-BgJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -307,6 +308,7 @@
                         <viewControllerLayoutGuide type="bottom" id="p1x-ui-4ba"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QOh-Lh-ppL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZf-n1-Kl9">
@@ -331,9 +333,9 @@
                                 <exclude reference="tZf-n1-Kl9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="N7m-Em-pFF"/>
                                 <exclude reference="BEO-Gh-toX"/>
                                 <exclude reference="Esu-rg-zAC"/>
-                                <exclude reference="N7m-Em-pFF"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -341,9 +343,9 @@
                                 <include reference="tZf-n1-Kl9"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="N7m-Em-pFF"/>
                                 <include reference="BEO-Gh-toX"/>
                                 <include reference="Esu-rg-zAC"/>
-                                <include reference="N7m-Em-pFF"/>
                             </mask>
                         </variation>
                     </view>
