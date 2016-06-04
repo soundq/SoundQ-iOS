@@ -12,10 +12,16 @@ struct Queue {
     
     var title: String
     var identifier: String
+    var owner: Int
     
     init(title: String, identifier: String) {
+        self.init(title: title, identifier: identifier, owner: 0)
+    }
+    
+    init(title: String, identifier: String, owner: Int) {
         self.title = title
         self.identifier = identifier
+        self.owner = owner
     }
     
     //var songs: [Song]

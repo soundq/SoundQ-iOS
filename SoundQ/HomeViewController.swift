@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Soundcloud
+import Alamofire
 
 class HomeViewController: UIViewController {
     
@@ -127,8 +128,17 @@ class HomeViewController: UIViewController {
     }
     
     func createQueue(title: String) {
-        print("Queue Title: \(title)")
         
+        var identifier: String = ""
+        let owner: Int = self.user!.identifier
+        
+        Alamofire.request(.GET, "http://sound-q.herokuapp.com/getqueuecode/", parameters: nil).responseString { response in
+            
+            identifier = response.result.value!
+        }
+        
+        let newQueue = Queue(title: title, identifier: identifier, owner: owner)
+        print(newQueue)
         //store in firebase and Realm?
     }
     
