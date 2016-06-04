@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftQRCode
 
 class QueueViewController: UIViewController {
     
@@ -48,6 +49,15 @@ class QueueViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [search, add]
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "QRCodeSegue") {
+            let queueCode: String = queue!.identifier
+            let QRCodeImage = QRCode.generateImage(queueCode, avatarImage: nil)
+            let nextViewController = segue.destinationViewController as! QueueRCodeViewController
+            nextViewController.QRCodeImage = QRCodeImage
+            nextViewController.queueCode = queueCode
+        }
+    }
     func presentModal() {
         self.performSegueWithIdentifier("QRCodeSegue", sender: self)
     }

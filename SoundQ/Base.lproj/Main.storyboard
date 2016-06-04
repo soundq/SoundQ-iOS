@@ -418,7 +418,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="QRCodeImageView" destination="jPa-7F-vMf" id="FxP-QY-hJZ"/>
                         <outlet property="backButton" destination="tZf-n1-Kl9" id="aVd-qU-mFo"/>
+                        <outlet property="queueCodeLabel" destination="ECB-nc-7cY" id="ZHo-Hs-h56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SvD-gx-pbz" userLabel="First Responder" sceneMemberID="firstResponder"/>

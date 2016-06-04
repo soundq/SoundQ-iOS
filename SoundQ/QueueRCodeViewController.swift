@@ -11,11 +11,18 @@ import UIKit
 class QueueRCodeViewController: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var QRCodeImageView: UIImageView!
+    @IBOutlet weak var queueCodeLabel: UILabel!
+    
+    var QRCodeImage: UIImage?
+    var queueCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.blackColor()
+        QRCodeImageView.image = QRCodeImage
+        queueCodeLabel.text = queueCode
     }
     
     override func didReceiveMemoryWarning() {

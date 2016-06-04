@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
         let buttonIncrement = buttonSize.width + padding.width
         
         for i in 0...(buttonCount - 1)  {
-            let button = configureQueueButtonWithIdentifier(String(i), size: buttonSize, position: buttonPosition)
+            let button = configureQueueButtonWithIdentifier("n7376y", size: buttonSize, position: buttonPosition)
             
             buttonPosition.x = buttonPosition.x + buttonIncrement
             
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
         queueButton.layer.borderWidth = 2
         queueButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-        queueButton.setTitle("Nishil Queue \(id)", forState: UIControlState.Normal)
+        queueButton.setTitle("Queue \(id)", forState: UIControlState.Normal)
         queueButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
         
         return queueButton
@@ -129,16 +129,14 @@ class HomeViewController: UIViewController {
     
     func createQueue(title: String) {
         
-        var identifier: String = ""
-        let owner: Int = self.user!.identifier
-        
         Alamofire.request(.GET, "http://sound-q.herokuapp.com/getqueuecode/", parameters: nil).responseString { response in
             
-            identifier = response.result.value!
+            let identifier = response.result.value!
+            let owner: Int = self.user!.identifier
+            let newQueue = Queue(title: title, identifier: identifier, owner: owner)
+            print(newQueue)
         }
         
-        let newQueue = Queue(title: title, identifier: identifier, owner: owner)
-        print(newQueue)
         //store in firebase and Realm?
     }
     
