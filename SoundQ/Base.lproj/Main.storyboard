@@ -448,6 +448,31 @@
             </objects>
             <point key="canvasLocation" x="2227.5" y="1080"/>
         </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="ggo-M2-2mI">
+            <objects>
+                <tableViewController storyboardIdentifier="searchTableViewController" id="gX7-P8-RSp" customClass="SearchTableViewController" customModule="SoundQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BAE-n9-6Wd">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" id="ziM-Je-fQ7">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ziM-Je-fQ7" id="uLH-Om-gpA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gX7-P8-RSp" id="lsI-jP-UWk"/>
+                            <outlet property="delegate" destination="gX7-P8-RSp" id="W5y-xQ-PH5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIf-DQ-35C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3198" y="1080"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="YHQ-q5-bnS">
             <objects>

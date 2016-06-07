@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
         var buttonPosition = CGPointMake(padding.width * 0.5, 0)
         let buttonIncrement = buttonSize.width + padding.width
         
-        for i in 0...(buttonCount - 1)  {
+        for _ in 0...(buttonCount - 1)  {
             let button = configureQueueButtonWithIdentifier("n7376y", size: buttonSize, position: buttonPosition)
             
             buttonPosition.x = buttonPosition.x + buttonIncrement

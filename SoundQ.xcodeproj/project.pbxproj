@@ -10,6 +10,7 @@
 		0D35A3B91D00816200F22899 /* QueueRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */; };
 		0D35A3BB1D008BA400F22899 /* JoinQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */; };
 		0D371A921CF2386A00A0AD31 /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D371A911CF2386A00A0AD31 /* QueueViewController.swift */; };
+		0D3889661D0718E700CDA37F /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3889651D0718E700CDA37F /* SearchTableViewController.swift */; };
 		0D5EB3FF1CF5FB7800FA9CCA /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */; };
 		0D6BEA9A1CF26812009510B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BEA991CF26812009510B9 /* Queue.swift */; };
 		0D955CE01CE2BC0C001F28DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */; };
@@ -47,6 +48,7 @@
 		0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueRCodeViewController.swift; sourceTree = "<group>"; };
 		0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinQueueViewController.swift; sourceTree = "<group>"; };
 		0D371A911CF2386A00A0AD31 /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
+		0D3889651D0718E700CDA37F /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		0D6BEA991CF26812009510B9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "../../../../nishilshah/workspace/SoundQ-iOS/SoundQ/HomeViewController.swift"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				0D9BDE271CFFBCA400E6A91C /* SoundcloudUserExtension.swift */,
 				0D35A3B81D00816200F22899 /* QueueRCodeViewController.swift */,
 				0D35A3BA1D008BA400F22899 /* JoinQueueViewController.swift */,
+				0D3889651D0718E700CDA37F /* SearchTableViewController.swift */,
 			);
 			path = SoundQ;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				0D6BEA9A1CF26812009510B9 /* Queue.swift in Sources */,
 				0D5EB3FF1CF5FB7800FA9CCA /* RealmUser.swift in Sources */,
 				0DA873991CCE674500E17A03 /* SoundCloudAuth.swift in Sources */,
+				0D3889661D0718E700CDA37F /* SearchTableViewController.swift in Sources */,
 				0D371A921CF2386A00A0AD31 /* QueueViewController.swift in Sources */,
 				0DD718F21CCD21140064A8F1 /* AppDelegate.swift in Sources */,
 				0DF13C621CEABE7200EF0EE0 /* Utilities.swift in Sources */,
