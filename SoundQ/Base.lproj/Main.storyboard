@@ -442,6 +442,7 @@
                     </view>
                     <connections>
                         <segue destination="bIo-z6-IVO" kind="presentation" identifier="QRCodeSegue" id="pVE-MI-fJG"/>
+                        <segue destination="gX7-P8-RSp" kind="show" identifier="SearchSegue" id="A8M-D6-23y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4h1-9q-QUy" userLabel="First Responder" sceneMemberID="firstResponder"/>

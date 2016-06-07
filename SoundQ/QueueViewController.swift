@@ -43,8 +43,8 @@ class QueueViewController: UIViewController {
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         
-        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(presentModal))
-        let search = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(addTapped))
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(presentQRCodeModal))
+        let search = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(presentSearchModal))
         
         self.navigationItem.rightBarButtonItems = [search, add]
     }
@@ -58,12 +58,13 @@ class QueueViewController: UIViewController {
             nextViewController.queueCode = queueCode
         }
     }
-    func presentModal() {
+    
+    func presentQRCodeModal() {
         self.performSegueWithIdentifier("QRCodeSegue", sender: self)
     }
     
-    func addTapped() {
-        
+    func presentSearchModal() {
+        self.performSegueWithIdentifier("SearchSegue", sender: self)
     }
     
 }
