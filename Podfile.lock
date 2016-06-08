@@ -1,6 +1,8 @@
 PODS:
   - 1PasswordExtension (1.8.1)
   - Alamofire (3.3.1)
+  - AlamofireImage (2.4.0):
+    - Alamofire (~> 3.3)
   - ASHorizontalScrollView (1.1)
   - Firebase (2.5.1)
   - Realm (1.0.0):
@@ -16,6 +18,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
+  - AlamofireImage (~> 2.0)
   - ASHorizontalScrollView (~> 1.1)
   - Firebase (>= 2.5.1)
   - RealmSwift
@@ -25,6 +28,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   1PasswordExtension: 00d6f4caae77c19ba33045b8569fbeb9689f0d1d
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   ASHorizontalScrollView: 97f78b44008078b9c3ea1fe3ed7286c39e47d4e8
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c

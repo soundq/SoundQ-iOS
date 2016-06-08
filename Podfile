@@ -6,6 +6,7 @@ use_frameworks!
 pod 'Soundcloud'
 pod 'Firebase', '>= 2.5.1'
 pod 'Alamofire', '~> 3.3'
+pod 'AlamofireImage', '~> 2.0'
 pod 'ASHorizontalScrollView', '~> 1.1'
 pod 'RealmSwift'
 pod 'SwiftQRCode'

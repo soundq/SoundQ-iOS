@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Soundcloud
+import Alamofire
+import AlamofireImage
 
 class SearchTableViewController : UITableViewController, UISearchResultsUpdating {
     
     let searchController = UISearchController(searchResultsController: nil)
+    var searchResults: [Track] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +41,42 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         self.tableView.tableHeaderView = searchController.searchBar
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count == 0 ? 0 : searchResults.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell", forIndexPath: indexPath) as! SearchResultTableViewCell
+        cell.titleLabel.text = searchResults[indexPath.row].title
+        cell.artistLabel.text = searchResults[indexPath.row].createdBy.username
         
+        let coverArtPath = searchResults[indexPath.row].artworkImageURL.smallURL?.absoluteString
+        Alamofire.request(.GET, coverArtPath!).responseImage { response in
+            if let image = response.result.value {
+                cell.coverArt.image = image
+            }
+        }
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.coverArt.image = UIImage(named: "album")
+        return cell
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        let searchText = searchController.searchBar.text
+        let queryOptions: [SearchQueryOptions] = [ .QueryString(searchText!) ]
+        
+        if(searchText!.characters.count > 0) {
+            Track.search(queryOptions, completion: { result in
+                self.searchResults = result.response.result!
+                print("COUNT \(self.searchResults.count)")
+            })
+        }
+        self.tableView.reloadData()
     }
     
     
