@@ -21,7 +21,9 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         
         self.title = "Add Songs"
         self.tableView.backgroundColor = UIColor.blackColor()
-        
+        self.view.backgroundColor = UIColor.blackColor()
+        self.tableView.separatorInset = UIEdgeInsetsZero
+
         setBackButton()
         setSearchController()
     }
@@ -46,23 +48,27 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count == 0 ? 0 : searchResults.count
+        return searchResults.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell", forIndexPath: indexPath) as! SearchResultTableViewCell
+        cell.backgroundColor = UIColor.clearColor()
+        
+        cell.track = searchResults[indexPath.row]
         cell.titleLabel.text = searchResults[indexPath.row].title
         cell.artistLabel.text = searchResults[indexPath.row].createdBy.username
+        cell.coverArt.image = UIImage(named: "unknown_cover_art")
         
-        let coverArtPath = searchResults[indexPath.row].artworkImageURL.smallURL?.absoluteString
+        let coverArtPath = searchResults[indexPath.row].artworkImageURL.largeURL?.absoluteString
+        print(coverArtPath)
         Alamofire.request(.GET, coverArtPath!).responseImage { response in
             if let image = response.result.value {
                 cell.coverArt.image = image
             }
         }
         
-        cell.backgroundColor = UIColor.clearColor()
-        cell.coverArt.image = UIImage(named: "album")
         return cell
     }
     

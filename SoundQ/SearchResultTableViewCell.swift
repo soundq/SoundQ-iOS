@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Soundcloud
 
 class SearchResultTableViewCell: UITableViewCell {
     
@@ -14,4 +15,5 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var coverArt: UIImageView!
     
+    var track: Track?
 }
