@@ -62,7 +62,6 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         cell.coverArt.image = UIImage(named: "unknown_cover_art")
         
         let coverArtPath = searchResults[indexPath.row].artworkImageURL.largeURL?.absoluteString
-        print(coverArtPath)
         Alamofire.request(.GET, coverArtPath!).responseImage { response in
             if let image = response.result.value {
                 cell.coverArt.image = image

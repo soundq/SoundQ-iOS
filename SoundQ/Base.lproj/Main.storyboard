@@ -467,17 +467,30 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCM-Jg-Ebp">
                                             <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                             <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="90" y="8" width="310" height="21"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="90" y="8" width="302" height="21"/>
                                             </variation>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RvE-7o-4SP">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="15" y="3" width="62" height="62"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="62" id="WGp-lw-JXG"/>
+                                                <constraint firstAttribute="width" secondItem="RvE-7o-4SP" secondAttribute="height" multiplier="1:1" id="vmB-lJ-Ryw"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="WGp-lw-JXG"/>
+                                                    <exclude reference="vmB-lJ-Ryw"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="WGp-lw-JXG"/>
+                                                    <include reference="vmB-lJ-Ryw"/>
+                                                </mask>
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bet-Ai-Amq">
@@ -485,16 +498,36 @@
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                            <variation key="widthClass=compact" misplaced="YES">
                                                 <rect key="frame" x="90" y="32" width="310" height="21"/>
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bet-Ai-Amq" firstAttribute="leading" secondItem="RvE-7o-4SP" secondAttribute="trailing" constant="13" id="6yO-o1-t7I"/>
+                                        <constraint firstItem="lCM-Jg-Ebp" firstAttribute="top" secondItem="uLH-Om-gpA" secondAttribute="topMargin" id="9OF-5A-GvM"/>
+                                        <constraint firstItem="RvE-7o-4SP" firstAttribute="top" secondItem="uLH-Om-gpA" secondAttribute="topMargin" constant="-5" id="Kmd-c5-0Zc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RvE-7o-4SP" secondAttribute="bottom" constant="-5.5" id="L7q-Jq-Cfj"/>
+                                        <constraint firstItem="lCM-Jg-Ebp" firstAttribute="trailing" secondItem="uLH-Om-gpA" secondAttribute="trailingMargin" id="SNE-kh-Xor"/>
+                                        <constraint firstItem="lCM-Jg-Ebp" firstAttribute="leading" secondItem="RvE-7o-4SP" secondAttribute="trailing" constant="13" id="UxL-hU-Rbj"/>
+                                        <constraint firstItem="bet-Ai-Amq" firstAttribute="top" secondItem="lCM-Jg-Ebp" secondAttribute="bottom" constant="3" id="jaL-d6-SUW"/>
+                                        <constraint firstItem="RvE-7o-4SP" firstAttribute="leading" secondItem="uLH-Om-gpA" secondAttribute="leadingMargin" constant="7" id="u8A-jP-ReJ"/>
+                                    </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="lCM-Jg-Ebp"/>
                                             <exclude reference="RvE-7o-4SP"/>
                                             <exclude reference="bet-Ai-Amq"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="Kmd-c5-0Zc"/>
+                                            <exclude reference="L7q-Jq-Cfj"/>
+                                            <exclude reference="u8A-jP-ReJ"/>
+                                            <exclude reference="9OF-5A-GvM"/>
+                                            <exclude reference="SNE-kh-Xor"/>
+                                            <exclude reference="UxL-hU-Rbj"/>
+                                            <exclude reference="6yO-o1-t7I"/>
+                                            <exclude reference="jaL-d6-SUW"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -502,6 +535,16 @@
                                             <include reference="lCM-Jg-Ebp"/>
                                             <include reference="RvE-7o-4SP"/>
                                             <include reference="bet-Ai-Amq"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="Kmd-c5-0Zc"/>
+                                            <include reference="L7q-Jq-Cfj"/>
+                                            <include reference="u8A-jP-ReJ"/>
+                                            <include reference="9OF-5A-GvM"/>
+                                            <include reference="SNE-kh-Xor"/>
+                                            <include reference="UxL-hU-Rbj"/>
+                                            <include reference="6yO-o1-t7I"/>
+                                            <include reference="jaL-d6-SUW"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
