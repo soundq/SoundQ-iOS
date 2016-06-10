@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Soundcloud
 
 struct Utilities {
     
@@ -54,4 +55,18 @@ struct Utilities {
         return newImage
     }
     
+}
+
+func == (lhs: Track, rhs: Track) -> Bool {
+    return lhs.identifier == rhs.identifier
+}
+
+extension Array where Element: Equatable {
+    
+    //remove object which is same as specified object
+    mutating func removeObject(object : Generator.Element) {
+        if let index = self.indexOf(object) {
+            self.removeAtIndex(index)
+        }
+    }
 }

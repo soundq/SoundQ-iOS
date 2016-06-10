@@ -15,6 +15,7 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
     
     let searchController = UISearchController(searchResultsController: nil)
     var searchResults: [Track] = []
+    var tracksToAdd: [Track] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,11 +88,17 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
+        let track = cell.track!
+        tracksToAdd.append(track)
+        print(tracksToAdd.count)
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath.row)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
+        let track = cell.track!
+        tracksToAdd.removeObject(track)
+        print(tracksToAdd.count)
     }
     
 }
