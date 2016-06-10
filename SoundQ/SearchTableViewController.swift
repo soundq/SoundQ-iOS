@@ -23,6 +23,7 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         self.tableView.backgroundColor = UIColor.blackColor()
         self.view.backgroundColor = UIColor.blackColor()
         self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.allowsMultipleSelection = true;
 
         setBackButton()
         setSearchController()
@@ -75,14 +76,22 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         let searchText = searchController.searchBar.text
         let queryOptions: [SearchQueryOptions] = [ .QueryString(searchText!) ]
         
+        searchResults.removeAll(keepCapacity: false)
+        
         if(searchText!.characters.count > 0) {
             Track.search(queryOptions, completion: { result in
                 self.searchResults = result.response.result!
-                print("COUNT \(self.searchResults.count)")
+                self.tableView.reloadData()
             })
         }
-        self.tableView.reloadData()
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath.row)
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath.row)
+    }
     
 }
