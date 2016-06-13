@@ -43,6 +43,18 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         searchController.searchBar.sizeToFit()
         searchController.searchBar.barTintColor = UIColor.blackColor()
         self.tableView.tableHeaderView = searchController.searchBar
+        self.definesPresentationContext = true
+        
+        let add = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addTracks))
+        add.enabled = false;
+        self.navigationItem.rightBarButtonItem = add
+    }
+    
+    func addTracks() {
+        let queueViewController = self.backViewController() as! QueueViewController
+        queueViewController.queue?.tracks += self.tracksToAdd
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -73,6 +85,15 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         return cell
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let searchResultCell = cell as! SearchResultTableViewCell
+        let track = searchResultCell.track!
+        
+        if(tracksToAdd.contains(track)) {
+            cell.setSelected(true, animated: false)
+        }
+    }
+    
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchText = searchController.searchBar.text
         let queryOptions: [SearchQueryOptions] = [ .QueryString(searchText!) ]
@@ -91,14 +112,22 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
         let track = cell.track!
         tracksToAdd.append(track)
-        print(tracksToAdd.count)
+        updateAddButton()
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
         let track = cell.track!
         tracksToAdd.removeObject(track)
-        print(tracksToAdd.count)
+        updateAddButton()
+    }
+    
+    func updateAddButton() {
+        if(tracksToAdd.count > 0) {
+            self.navigationItem.rightBarButtonItem?.enabled = true;
+        } else {
+            self.navigationItem.rightBarButtonItem?.enabled = false;
+        }
     }
     
 }

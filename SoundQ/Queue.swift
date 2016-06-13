@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import Soundcloud
 
 struct Queue {
     
     var title: String
     var identifier: String
     var owner: Int
+    var tracks: [Track] = []
     
     init(title: String, identifier: String) {
         self.init(title: title, identifier: identifier, owner: 0)

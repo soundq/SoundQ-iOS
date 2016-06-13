@@ -70,3 +70,16 @@ extension Array where Element: Equatable {
         }
     }
 }
+
+extension UIViewController {
+    func backViewController() -> UIViewController? {
+        if let stack = self.navigationController?.viewControllers {
+            for i in (1..<stack.count).reverse() {
+                if(stack[i] == self) {
+                    return stack[i-1]
+                }
+            }
+        }
+        return nil
+    }
+}
