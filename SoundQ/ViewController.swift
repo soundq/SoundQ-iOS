@@ -22,20 +22,23 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let ref = FIRDatabase.database().reference()
         let realm = try! Realm()
         
-        userIsLoggedIn = (ref.authData != nil)
-        if userIsLoggedIn {
-            let realmUser = realm.objects(RealmUser).first
-            if realmUser != nil {
-                connectButton.hidden = true
-                user = User(fromRealmUser: realmUser!)
-                print(user)
-            } else {
-                userIsLoggedIn = false;
+        FIRAuth.auth()!.addAuthStateDidChangeListener() { (auth, firebaseUser) in
+            if let firebaseUser = firebaseUser {
+                let realmUser = realm.objects(RealmUser).filter("identifier == %@", firebaseUser.uid).first //where id = firebaseUser.id
+                if realmUser != nil {
+                    self.userIsLoggedIn = true
+                    self.connectButton.hidden = true
+                    self.user = User(fromRealmUser: realmUser!)
+                    print(self.user)
+                } else {
+                    self.userIsLoggedIn = false;
+                }
             }
         }
+        
+        //try! FIRAuth.auth()!.signOut()
     }
     
     override func viewDidLoad() {
@@ -107,13 +110,13 @@ class ViewController: UIViewController {
     }
     
     func authenticateWithFirebase() {
-        let ref = Firebase(url: "https://soundq.firebaseio.com/")
-        
         Alamofire.request(.GET, "http://sound-q.herokuapp.com/gettoken/", parameters: ["uid": user!.identifier, "auth_data": ""]).responseString { response in
             
             if let auth_token = response.result.value {
-                ref.authWithCustomToken(auth_token, withCompletionBlock: { error, authData in
-                    if error == nil {
+                FIRAuth.auth()!.signInWithCustomToken(auth_token, completion: { firebaseUser, error in
+                    if let error = error {
+                        print("sign in failed: "+error.localizedDescription)
+                    } else {
                         self.updateUserInFirebase()
                     }
                 })
@@ -122,13 +125,12 @@ class ViewController: UIViewController {
     }
     
     func updateUserInFirebase() {
-        let userURL = "https://soundq.firebaseio.com/users/"+String(self.user!.identifier)
-        let userRef = Firebase(url: userURL)
+        let userRef = FIRDatabase.database().reference().child("users/"+String(self.user!.identifier))
         
         userRef.observeSingleEventOfType(.Value, withBlock: { userSnapshot in
-            userRef.childByAppendingPath("fullName").setValue(self.user!.fullname)
+            userRef.child("fullName").setValue(self.user!.fullname)
             if(!userSnapshot.hasChild("queues")) {
-                userRef.childByAppendingPath("queues").setValue("null");
+                userRef.child("queues").setValue("null");
             }
         })
     }
