@@ -17,7 +17,7 @@ class QueueViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.title = queue?.title
-        print("Tracks in Queue: \(queue?.tracks.count!)")
+        print("Tracks in Queue: \(queue?.tracks.count)")
     }
     
     override func viewDidLoad() {
