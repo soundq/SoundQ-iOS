@@ -13,6 +13,7 @@
 		0D3889661D0718E700CDA37F /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3889651D0718E700CDA37F /* SearchTableViewController.swift */; };
 		0D5EB3FF1CF5FB7800FA9CCA /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */; };
 		0D6BEA9A1CF26812009510B9 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BEA991CF26812009510B9 /* Queue.swift */; };
+		0D7D2D421D0FA828008074E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D7D2D411D0FA828008074E0 /* GoogleService-Info.plist */; };
 		0D955CE01CE2BC0C001F28DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */; };
 		0D9BDE281CFFBCA400E6A91C /* SoundcloudUserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BDE271CFFBCA400E6A91C /* SoundcloudUserExtension.swift */; };
 		0DA873991CCE674500E17A03 /* SoundCloudAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA873981CCE674500E17A03 /* SoundCloudAuth.swift */; };
@@ -52,6 +53,7 @@
 		0D3889651D0718E700CDA37F /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		0D5EB3FE1CF5FB7800FA9CCA /* RealmUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		0D6BEA991CF26812009510B9 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		0D7D2D411D0FA828008074E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0D955CDF1CE2BC0C001F28DD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "../../../../nishilshah/workspace/SoundQ-iOS/SoundQ/HomeViewController.swift"; sourceTree = "<group>"; };
 		0D9BDE271CFFBCA400E6A91C /* SoundcloudUserExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundcloudUserExtension.swift; sourceTree = "<group>"; };
 		0DA873981CCE674500E17A03 /* SoundCloudAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundCloudAuth.swift; path = "../../../../nishilshah/workspace/SoundQ-iOS/SoundQ/SoundCloudAuth.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		0DD718E51CCD21140064A8F1 = {
 			isa = PBXGroup;
 			children = (
+				0D7D2D411D0FA828008074E0 /* GoogleService-Info.plist */,
 				0DD718F01CCD21140064A8F1 /* SoundQ */,
 				0DD719051CCD21150064A8F1 /* SoundQTests */,
 				0DD719101CCD21150064A8F1 /* SoundQUITests */,
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DD718FC1CCD21140064A8F1 /* LaunchScreen.storyboard in Resources */,
+				0D7D2D421D0FA828008074E0 /* GoogleService-Info.plist in Resources */,
 				0DD718F91CCD21140064A8F1 /* Assets.xcassets in Resources */,
 				0DD718F71CCD21140064A8F1 /* Main.storyboard in Resources */,
 			);

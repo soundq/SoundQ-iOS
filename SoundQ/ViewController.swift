@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let ref = Firebase(url: "https://soundq.firebaseio.com")
+        let ref = FIRDatabase.database().reference()
         let realm = try! Realm()
         
         userIsLoggedIn = (ref.authData != nil)

@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Soundcloud.clientSecret = SCAuth.clientSecret
         Soundcloud.redirectURI = SCAuth.redirectURI
         
+        FIRApp.configure()
+        
         return true
     }
 
