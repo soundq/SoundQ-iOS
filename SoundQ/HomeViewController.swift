@@ -22,6 +22,20 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //load basic queue data from FireBase
+        let userQueuesURL = "https://soundq.firebaseio.com/users/\(self.user!.identifier)/queues"
+        print(userQueuesURL)
+        let userQueuesRef = Firebase(url: userQueuesURL)
+        
+        var userQueues: [String] = []
+        
+        userQueuesRef.observeSingleEventOfType(.Value, withBlock: { userQueuesSnapshot in
+            for queue in userQueuesSnapshot.children {
+                userQueues.append(queue.key)
+            }
+            
+            print(userQueues)
+        })
+        
     }
     
     override func viewDidLoad() {
@@ -149,6 +163,7 @@ class HomeViewController: UIViewController {
             queuesRef.childByAppendingPath("title").setValue(queue.title)
             queuesRef.childByAppendingPath("owner").setValue(queue.owner)
             queuesRef.childByAppendingPath("tracks").setValue("")
+            queuesRef.childByAppendingPath("coverArt").setValue("")
         })
         
         let userQueuesURL = "https://soundq.firebaseio.com/users/\(queue.owner)/queues"
