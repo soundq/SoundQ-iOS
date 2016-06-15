@@ -134,10 +134,29 @@ class HomeViewController: UIViewController {
             let identifier = response.result.value!
             let owner: Int = self.user!.identifier
             let newQueue = Queue(title: title, identifier: identifier, owner: owner)
-            print(newQueue)
+            
+            self.storeQueueInFirebase(newQueue)
         }
         
-        //store in firebase and Realm?
+        //store in Realm?
+    }
+    
+    func storeQueueInFirebase(queue: Queue) {
+        let queuesURL = "https://soundq.firebaseio.com/queues/"+queue.identifier
+        let queuesRef = Firebase(url: queuesURL)
+        
+        queuesRef.observeSingleEventOfType(.Value, withBlock: { queueSnapshot in
+            queuesRef.childByAppendingPath("title").setValue(queue.title)
+            queuesRef.childByAppendingPath("owner").setValue(queue.owner)
+            queuesRef.childByAppendingPath("tracks").setValue("")
+        })
+        
+        let userQueuesURL = "https://soundq.firebaseio.com/users/\(queue.owner)/queues"
+        let userQueuesRef = Firebase(url: userQueuesURL)
+        
+        userQueuesRef.observeSingleEventOfType(.Value, withBlock: { userSnapshot in
+            userQueuesRef.childByAppendingPath(String(queue.identifier)).setValue("")
+        })
     }
     
     @IBAction func createQueuePressed(sender: UIButton) {

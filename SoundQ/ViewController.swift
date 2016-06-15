@@ -122,6 +122,7 @@ class ViewController: UIViewController {
     }
     
     func updateUserInFirebase() {
+        print("updating user in firebase")
         let userURL = "https://soundq.firebaseio.com/users/"+String(self.user!.identifier)
         let userRef = Firebase(url: userURL)
         
