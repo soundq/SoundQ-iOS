@@ -24,6 +24,30 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        setQueueButtons()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setBackgroundColors()
+        setNavigationBar()
+        setActivityIndicator()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(queues.count == 0) {
+            activityIndicator.startAnimating()
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func setQueueButtons() {
         //load basic queue data from FireBase
         let userQueuesURL = "https://soundq.firebaseio.com/users/\(self.user!.identifier)/queues"
         let userQueuesRef = Firebase(url: userQueuesURL)
@@ -61,28 +85,14 @@ class HomeViewController: UIViewController {
         })
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setBackgroundColors()
-        setNavigationBar()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        activityIndicator.color = UIColor.whiteColor()
-        activityIndicator.transform = CGAffineTransformMakeScale(2, 2);
-        activityIndicator.startAnimating()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func setBackgroundColors() {
         horizontalScrollView.backgroundColor = UIColor.blackColor()
         self.view.backgroundColor = UIColor.blackColor()
+    }
+    
+    func setActivityIndicator() {
+        activityIndicator.color = UIColor.whiteColor()
+        activityIndicator.transform = CGAffineTransformMakeScale(2, 2);
     }
     
     func setScrollView() {
