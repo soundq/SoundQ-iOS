@@ -8,6 +8,8 @@
 
 import Foundation
 import Soundcloud
+import Alamofire
+import AlamofireImage
 
 struct Queue {
     
@@ -15,6 +17,7 @@ struct Queue {
     var identifier: String
     var owner: Int
     var tracks: [Track] = []
+    var coverArt: UIImage?
     
     init(title: String, identifier: String) {
         self.init(title: title, identifier: identifier, owner: 0)
@@ -26,6 +29,21 @@ struct Queue {
         self.owner = owner
     }
     
-    //var songs: [Song]
+    mutating func setCoverArtWithPath(path: String) {
+        if path.characters.count < 1 {
+            setUnknownCoverArt()
+        }
+        Alamofire.request(.GET, path).responseImage { response in
+            if let image = response.result.value {
+                self.coverArt = image
+            } else {
+                self.setUnknownCoverArt()
+            }
+        }
+    }
+    
+    mutating func setUnknownCoverArt() {
+        self.coverArt = UIImage(named: "unknown_cover_art")
+    }
     
 }

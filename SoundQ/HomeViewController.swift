@@ -17,25 +17,46 @@ class HomeViewController: UIViewController {
     
     var user: User?
     var pressedQueue: Queue?
+    var queueIdentifiers: [String] = []
+    var queues: [Queue] = []
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         //load basic queue data from FireBase
         let userQueuesURL = "https://soundq.firebaseio.com/users/\(self.user!.identifier)/queues"
-        print(userQueuesURL)
         let userQueuesRef = Firebase(url: userQueuesURL)
         
-        var userQueues: [String] = []
+        //var userQueues: [String] = []
+        queueIdentifiers = []
+        queues = []
         
         userQueuesRef.observeSingleEventOfType(.Value, withBlock: { userQueuesSnapshot in
             for queue in userQueuesSnapshot.children {
-                userQueues.append(queue.key)
+                self.queueIdentifiers.append(queue.key)
+                
+                //if !self.queueIdentifiers.contains(queue.key) {
+                //}
+                let queueURL = "https://soundq.firebaseio.com/queues/\(queue.key)"
+                let queueRef =  Firebase(url: queueURL)
+                
+                queueRef.observeSingleEventOfType(.Value, withBlock: { queueSnapshot in
+                    let identifier = queue.key
+                    let title = queueSnapshot.value.objectForKey("title") as! String
+                    let owner = queueSnapshot.value.objectForKey("owner") as! Int
+                    let coverArtPath = queueSnapshot.value.objectForKey("coverArt") as! String
+                    
+                    var newQueue = Queue(title: title, identifier: identifier, owner: owner)
+                    newQueue.setCoverArtWithPath(coverArtPath)
+                    self.queues.append(newQueue)
+                    print(newQueue)
+                    
+                    if(self.queueIdentifiers.count == Int(userQueuesSnapshot.childrenCount)) {
+                        self.setScrollView()
+                    }
+                })
             }
-            
-            print(userQueues)
         })
-        
     }
     
     override func viewDidLoad() {
@@ -43,7 +64,6 @@ class HomeViewController: UIViewController {
         
         setBackgroundColors()
         setNavigationBar()
-        setScrollView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,9 +76,10 @@ class HomeViewController: UIViewController {
     }
     
     func setScrollView() {
+        print("SET SCROLL VIEW")
         let hsvHeight = horizontalScrollView.frame.size.height
         
-        let scrollingView = colorButtonsView(CGSizeMake(hsvHeight * 1.4, hsvHeight * 1.4), buttonCount: 6)
+        let scrollingView = colorButtonsView(CGSizeMake(hsvHeight, hsvHeight), buttonCount: self.queues.count)
         horizontalScrollView.contentSize = CGSizeMake(scrollingView.frame.size.width, 1.0)
         horizontalScrollView.addSubview(scrollingView)
         horizontalScrollView.showsHorizontalScrollIndicator = false
@@ -91,13 +112,18 @@ class HomeViewController: UIViewController {
         var buttonPosition = CGPointMake(padding.width * 0.5, 0)
         let buttonIncrement = buttonSize.width + padding.width
         
-        for _ in 0...(buttonCount - 1)  {
-            let button = configureQueueButtonWithIdentifier("n7376y", size: buttonSize, position: buttonPosition)
+        if(buttonCount == 1) {
+            //shift to center
+            buttonPosition.x = horizontalScrollView.frame.size.width/2 - buttonSize.width/2
+        }
+        
+        for i in 0...(buttonCount - 1)  {
+            let button = configureQueueButtonAtIndex(i, size: buttonSize, position: buttonPosition)
             
             buttonPosition.x = buttonPosition.x + buttonIncrement
             
             //set background image
-            var buttonImage = UIImage(named: "album")
+            var buttonImage = queues[i].coverArt
             buttonImage = Utilities().drawRectangleOnImage(buttonImage!)
             button.setBackgroundImage(buttonImage, forState: UIControlState.Normal)
             
@@ -108,10 +134,11 @@ class HomeViewController: UIViewController {
         return buttonView
     }
     
-    func configureQueueButtonWithIdentifier(id: String, size: CGSize, position: CGPoint) -> UIButton {
+    func configureQueueButtonAtIndex(index: Int, size: CGSize, position: CGPoint) -> UIButton {
         let queueButton = UIButton(type: UIButtonType.Custom) as UIButton
+        let currentQueue = queues[index]
         
-        queueButton.accessibilityIdentifier = id
+        queueButton.accessibilityIdentifier = String(index)
         
         queueButton.frame.size = size
         queueButton.frame.origin = position
@@ -120,7 +147,7 @@ class HomeViewController: UIViewController {
         queueButton.layer.borderWidth = 2
         queueButton.layer.borderColor = UIColor.whiteColor().CGColor
         
-        queueButton.setTitle("Queue \(id)", forState: UIControlState.Normal)
+        queueButton.setTitle(currentQueue.title, forState: UIControlState.Normal)
         queueButton.titleLabel?.font = UIFont.systemFontOfSize(14.0)
         
         return queueButton
@@ -134,9 +161,7 @@ class HomeViewController: UIViewController {
     }
 
     func queuePressed(sender: UIButton){
-        let queueTitle = sender.currentTitle!
-        let queueIdentifier = sender.accessibilityIdentifier!
-        pressedQueue = Queue(title: queueTitle, identifier: queueIdentifier)
+        pressedQueue = queues[Int(sender.accessibilityIdentifier!)!]
         
         self.performSegueWithIdentifier("QueueSegue", sender: self)
     }
@@ -170,7 +195,7 @@ class HomeViewController: UIViewController {
         let userQueuesRef = Firebase(url: userQueuesURL)
         
         userQueuesRef.observeSingleEventOfType(.Value, withBlock: { userSnapshot in
-            userQueuesRef.childByAppendingPath(String(queue.identifier)).setValue("")
+            userQueuesRef.childByAppendingPath(String(queue.identifier)).setValue(queue.identifier)
         })
     }
     
