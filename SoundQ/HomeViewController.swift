@@ -14,6 +14,7 @@ import Alamofire
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var user: User?
     var pressedQueue: Queue?
@@ -53,6 +54,7 @@ class HomeViewController: UIViewController {
                     
                     if(self.queueIdentifiers.count == Int(userQueuesSnapshot.childrenCount)) {
                         self.setScrollView()
+                        self.activityIndicator.stopAnimating()
                     }
                 })
             }
@@ -66,6 +68,14 @@ class HomeViewController: UIViewController {
         setNavigationBar()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        activityIndicator.color = UIColor.whiteColor()
+        activityIndicator.transform = CGAffineTransformMakeScale(2, 2);
+        activityIndicator.startAnimating()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -76,7 +86,6 @@ class HomeViewController: UIViewController {
     }
     
     func setScrollView() {
-        print("SET SCROLL VIEW")
         let hsvHeight = horizontalScrollView.frame.size.height
         
         let scrollingView = colorButtonsView(CGSizeMake(hsvHeight, hsvHeight), buttonCount: self.queues.count)
