@@ -52,7 +52,7 @@ class SearchTableViewController : UITableViewController, UISearchResultsUpdating
     
     func addTracks() {
         let queueViewController = self.backViewController() as! QueueViewController
-        queueViewController.queue?.tracks += self.tracksToAdd
+        queueViewController.addTracks(tracksToAdd)
         
         self.navigationController?.popViewControllerAnimated(true)
     }

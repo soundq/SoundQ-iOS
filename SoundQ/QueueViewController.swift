@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftQRCode
+import Soundcloud
+import Firebase
 
 class QueueViewController: UIViewController {
     
@@ -58,6 +60,20 @@ class QueueViewController: UIViewController {
             nextViewController.QRCodeImage = QRCodeImage
             nextViewController.queueCode = queueCode
         }
+    }
+    
+    func addTracks(tracks: [Track]) {
+        self.queue?.tracks += tracks
+        
+        let queueIdentifier = self.queue?.identifier
+        let queueURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)/tracks"
+        let queueRef = Firebase(url: queueURL)
+        
+        queueRef.observeSingleEventOfType(.Value, withBlock: { queueSnapshot in
+            for track in tracks {
+                queueRef.childByAppendingPath(String(track.identifier)).setValue(NSDate().timeIntervalSince1970)
+            }
+        })
     }
     
     func presentQRCodeModal() {
