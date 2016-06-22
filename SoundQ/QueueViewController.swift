@@ -10,6 +10,7 @@ import UIKit
 import SwiftQRCode
 import Soundcloud
 import Firebase
+import RealmSwift
 
 class QueueViewController: UIViewController {
     
@@ -66,6 +67,7 @@ class QueueViewController: UIViewController {
         self.queue?.tracks += tracks
         
         let queueIdentifier = self.queue?.identifier
+        //add to firebase
         let queueURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)/tracks"
         let queueRef = Firebase(url: queueURL)
         
@@ -74,6 +76,21 @@ class QueueViewController: UIViewController {
                 queueRef.childByAppendingPath(String(track.identifier)).setValue(NSDate().timeIntervalSince1970)
             }
         })
+        
+        //save to realm
+        let realm = try! Realm()
+        print(Realm.Configuration.defaultConfiguration.fileURL?.absoluteString)
+        for track in tracks {
+            print(track.identifier)
+            let trackResult = realm.objects(RealmTrack.self).filter("identifier == \(track.identifier)")
+            print(trackResult.count)
+            if(trackResult.count == 0) {
+                try! realm.write {
+                    let realmTrack = RealmTrack(fromTrack: track)
+                    realm.add(realmTrack)
+                }
+            }
+        }
     }
     
     func presentQRCodeModal() {
