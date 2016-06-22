@@ -16,9 +16,13 @@ class QueueViewController: UIViewController {
     
     var queue: Queue?
     
+    @IBOutlet weak var nowPlayingImageView: UIImageView!
+    @IBOutlet weak var queueTableView: UITableView!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        nowPlayingImageView.backgroundColor = UIColor.whiteColor()
         self.title = queue?.title
         print("Tracks in Queue: \(queue?.tracks.count)")
     }
