@@ -19,6 +19,8 @@ class QueueViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var nowPlayingImageView: UIImageView!
     @IBOutlet weak var queueTableView: UITableView!
     
+    var nowPlayingImageURL: String = ""
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -45,9 +47,30 @@ class QueueViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let queueURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)"
         let queueRef = Firebase(url: queueURL)
         
+        
         queueRef.observeEventType(.Value, withBlock: { queueSnapshot in
-            print("observing")
+            let queueTitle = queueSnapshot.childSnapshotForPath("title").value
+            let queueOwner = queueSnapshot.childSnapshotForPath("owner").value
+            
+            let tracksRef = queueRef.childByAppendingPath("tracks")
+            tracksRef.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: { tracksSnapshot in
+                
+                var counter = 0
+                for track in tracksSnapshot.children {
+                    self.queue?.trackIdentifiers.append(Int(track.key!)!)
+                    counter += 1
+                    
+                    if(counter == Int(tracksSnapshot.childrenCount)) {
+                        self.processQueueData()
+                    }
+                }
+            })
+            
         })
+    }
+    
+    func processQueueData() {
+        print(self.queue?.trackIdentifiers)
     }
     
     func setTableView() {

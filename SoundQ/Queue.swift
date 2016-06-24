@@ -17,6 +17,7 @@ struct Queue {
     var identifier: String
     var owner: Int
     var tracks: [Track] = []
+    var trackIdentifiers: [Int] = []
     var coverArt: UIImage?
     
     init(title: String, identifier: String) {
