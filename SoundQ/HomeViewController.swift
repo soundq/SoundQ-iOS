@@ -74,7 +74,6 @@ class HomeViewController: UIViewController {
                     var newQueue = Queue(title: title, identifier: identifier, owner: owner)
                     newQueue.setCoverArtWithPath(coverArtPath)
                     self.queues.append(newQueue)
-                    print(newQueue)
                     
                     if(self.queueIdentifiers.count == Int(userQueuesSnapshot.childrenCount)) {
                         self.setScrollView()

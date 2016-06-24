@@ -12,7 +12,7 @@ import Soundcloud
 import Firebase
 import RealmSwift
 
-class QueueViewController: UIViewController {
+class QueueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var queue: Queue?
     
@@ -30,12 +30,29 @@ class QueueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadQueueData()
+        setTableView()
         setBackgroundColor()
         setNavigationBar()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func loadQueueData() {
+        let queueIdentifier = self.queue?.identifier
+        let queueURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)"
+        let queueRef = Firebase(url: queueURL)
+        
+        queueRef.observeEventType(.Value, withBlock: { queueSnapshot in
+            print("observing")
+        })
+    }
+    
+    func setTableView() {
+        queueTableView.delegate = self
+        queueTableView.dataSource = self
     }
     
     func setBackgroundColor() {
@@ -72,12 +89,12 @@ class QueueViewController: UIViewController {
         
         let queueIdentifier = self.queue?.identifier
         //add to firebase
-        let queueURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)/tracks"
-        let queueRef = Firebase(url: queueURL)
+        let tracksURL = "https://soundq.firebaseio.com/queues/\(queueIdentifier!)/tracks"
+        let tracksRef = Firebase(url: tracksURL)
         
-        queueRef.observeSingleEventOfType(.Value, withBlock: { queueSnapshot in
+        tracksRef.observeSingleEventOfType(.Value, withBlock: { tracksSnapshot in
             for track in tracks {
-                queueRef.childByAppendingPath(String(track.identifier)).setValue(NSDate().timeIntervalSince1970)
+                tracksRef.childByAppendingPath(String(track.identifier)).setValue(NSDate().timeIntervalSince1970)
             }
         })
         
@@ -85,9 +102,7 @@ class QueueViewController: UIViewController {
         let realm = try! Realm()
         print(Realm.Configuration.defaultConfiguration.fileURL?.absoluteString)
         for track in tracks {
-            print(track.identifier)
             let trackResult = realm.objects(RealmTrack.self).filter("identifier == \(track.identifier)")
-            print(trackResult.count)
             if(trackResult.count == 0) {
                 try! realm.write {
                     let realmTrack = RealmTrack(fromTrack: track)
@@ -95,6 +110,14 @@ class QueueViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
     func presentQRCodeModal() {

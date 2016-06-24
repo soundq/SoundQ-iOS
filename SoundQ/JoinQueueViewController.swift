@@ -42,7 +42,6 @@ class JoinQueueViewController: UIViewController {
     
     func prepareScanner() {
         scanner.prepareScan(self.view) { code -> () in
-            print(code)
             //add user to queue with id code
             self.dismissViewController()
         }
